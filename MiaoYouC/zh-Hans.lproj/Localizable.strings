@@ -1,0 +1,35 @@
+/* 
+  Localizable.strings
+  MiaoYouC
+
+  Created by drupem on 16/11/10.
+  Copyright © 2016年 drupem. All rights reserved.
+*/
+
+"please_input_telephone" = "请输入手机号";
+"please_input_password"  = "请输入密码";
+"forgetPassword"         = "忘记密码";
+"login"                  = "登      录";
+"regist"                 = "注册";
+"notHaveRegist"          = "还未注册";
+"wechatLogin"            = "微信登录";
+"telephone_number"       = "手机号";
+"verification_code"      = "验证码";
+"get_verification_code"  = "获取验证码";
+"requesting"             = "正在请求";
+"request_failed"         = "请求失败";
+"input_contain_null"     = "输入内容为空";
+"mobile_invalid"         = "手机号码无效";
+"dialog_close"           = "关闭";
+"reset_ok"               = "重置成功";
+"ok"                     = "好";
+
+"my_allOrder"            = "全部订单";
+"my_wallet"              = "我的钱包";
+"my_cardVoucher"         = "我的卡券";
+"my_collection"          = "我的收藏";
+"my_recommendFriends"    = "推荐好友";
+"my_useGuide"            = "使用指南";
+"my_controlCenter"       = "控制中心";
+"my_feedback"            = "意见反馈";
+"my_systemSettings"      = "系统设置";

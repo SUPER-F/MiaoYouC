@@ -1,0 +1,82 @@
+//
+//  PrefixHeader.pch
+//  MiaoYouC
+//
+//  Created by drupem on 16/11/4.
+//  Copyright © 2016年 drupem. All rights reserved.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+
+#import <UIKit/UIKit.h>
+
+#import "AppDelegate.h"
+
+#import "AFNetworking.h"
+// tabBar
+#import "RDVTabBarController.h"
+// notification
+#import "CWStatusBarNotification.h"
+// alertController
+#import "MSAlertController.h"
+// progressHUD
+#import "MBProgressHUD.h"
+// masonry
+#import "Masonry.h"
+
+#import <RestKit/RestKit.h>
+#import <RestKit/RKRequestSerialization.h>
+#import <RestKit/RKObjectMappingProvider.h>
+#import <RestKit/RKRequest.h>
+#import <RestKit/RKObjectLoader.h>
+#import <RestKit/RKURL.h>
+#import "APIClient.h"
+#import "APIRequest.h"
+#import "APIResponseKit.h"
+#import "APIClient+APIMethods.h"
+#import "KGModal.h"
+#import "ModelBase.h"
+
+#import "MYConfig.h"
+#import "Utils.h"
+#import "UIHelper.h"
+#import "DTO.h"
+// FoundationExtensions
+#import "UIFont+SytemFontOverride.h"
+#import "UIAlertView+CompletedBlock.h"
+#import "UILabel+BottomAligning.h"
+#import "UIAlertView+CompletedBlock.h"
+#import "NSString+HTML.h"
+#import "UIImageView+AFNetworking.h"
+
+#import "AppDataManager.h"
+
+#import "RegisterViewController.h"
+#import "LoginViewController.h"
+#import "FindPasswordViewController.h"
+
+#import "MessageViewController.h"
+#import "DestinationViewController.h"
+#import "TakeMePlayViewController.h"
+#import "DiscoverViewController.h"
+#import "FindButlerViewController.h"
+#import "MyViewController.h"
+
+#endif /* PrefixHeader_pch */
+
+
+
+#ifdef DEBUG
+#	define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#else
+#	define DLog(...)
+#endif
+
+// ALog always displays output regardless of the DEBUG setting
+#define ALog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "AppDelegate+RootController.h"
 
 @interface AppDelegate ()
 
@@ -14,9 +15,22 @@
 
 @implementation AppDelegate
 
++ (UINavigationController *)rootNavigationController
+{
+    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    return (UINavigationController *)app.window.rootViewController;
+    
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [self setAppWindows];
+    [self setTabbarController];
+    [self setRootViewController];
+    
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
