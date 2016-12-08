@@ -7,33 +7,57 @@
 //
 
 #import "BaseViewController.h"
+#import "SearchResultTableViewController.h"
 
-@interface BaseViewController () {
+@interface BaseViewController () <UITextFieldDelegate, SearchResultTableViewControllerDelegate> {
     UIImageView *_barImage;
+    
+    UITextField *_searchTextField;
     
     NSTimer * _flashMessageBtnTimer;
 }
+
+@property (nonatomic, strong) SearchResultTableViewController *searchResultVC;
+/** 记录键盘高度 */
+@property (nonatomic, assign) CGFloat keyboardHeight;
+/** 城市列表 */
+@property (nonatomic, copy) NSMutableArray *cityArray;
+// 搜索蒙版
+@property (nonatomic, strong) UIView *searchBgView;
 
 @end
 
 @implementation BaseViewController
 
 #pragma mark - viewController.lifeCircle
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
     
-    [self rdv_tabBarController].navigationItem.titleView = nil;
-    if ([self isKindOfClass:[DiscoverViewController class]])
-    {
+    // 导航栏消息
+    if ([self isKindOfClass:[DestinationViewController class]] || [self isKindOfClass:[TakeMePlayViewController class]] || [self isKindOfClass:[DiscoverViewController class]] || [self isKindOfClass:[FindButlerViewController class]]) {
+        
         [self messageBar];
     }
-    else
-    {
+    else {
         [self rdv_tabBarController].navigationItem.rightBarButtonItem = nil;
         [self rdv_tabBarController].navigationItem.rightBarButtonItems = nil;
+    }
+    
+    // 导航栏搜索
+    if ([self isKindOfClass:[DestinationViewController class]]) {
+        [self searchBar];
+    }
+    else {
+        [self rdv_tabBarController].navigationItem.titleView = nil;
+    }
+    
+    // 导航栏显示/隐藏
+    if ([self isKindOfClass:[MyViewController class]]) {
+        self.navigationController.navigationBarHidden = YES;
+    }
+    else {
+        self.navigationController.navigationBarHidden = NO;
     }
     
     [self rdv_tabBarController].navigationController.navigationBar.shadowImage = [[UIImage alloc]init];
@@ -51,12 +75,13 @@
     }
     else
     {
-        _barImage.image = [UIImage imageNamed:@"tixing_xiaoxi"];
+        _barImage.image = [UIImage imageNamed:@"destination_message"];
     }
     
     
     [self setNeedsStatusBarAppearanceUpdate];
 }
+
 
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -69,11 +94,20 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
+    _cityArray = [NSMutableArray arrayWithCapacity:200];
+    for (int i = 0; i < 200; i ++) {
+        int NUMBER_OF_CHARS = 5;
+        char data[NUMBER_OF_CHARS];//生成一个五位数的字符串
+        for (int x=0;x<10;data[x++] = (char)('A' + (arc4random_uniform(26))));
+        NSString *string = [[NSString alloc] initWithBytes:data length:5 encoding:NSUTF8StringEncoding];//随机给字符串赋值
+        [_cityArray addObject:string];
+    }//随机生成200个五位数的字符串
+    
     _isShowTabbar = YES;
     
     self.hidesBottomBarWhenPushed = YES;
     
-    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.translucent = YES;
     
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:19],NSForegroundColorAttributeName:[UIColor blackColor]}];
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
@@ -85,11 +119,16 @@
     [SZNotificationCenter addObserver:self selector:@selector(getMessage) name:@"GETNotifation" object:nil];
     
     [SZNotificationCenter addObserver:self selector:@selector(cancelFlash) name:@"cancelMessageButtonFlash" object:nil];
+    // 键盘出现通知
+    [SZNotificationCenter addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    // UITextfield改变通知
+    [SZNotificationCenter addObserver:self selector:@selector(textfieldDidChange) name:UITextFieldTextDidChangeNotification object:nil];
+    
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
 }
 
 -(void)dealloc{
@@ -132,13 +171,149 @@
 {
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -64) forBarMetrics:UIBarMetricsDefault];
     [self messageBar];
+//    [self searchBar];
 }
 
+- (void)searchBar {
 
+    CGRect mainViewBounds = self.navigationController.view.bounds;
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(mainViewBounds)/2-((CGRectGetWidth(mainViewBounds)-120)/2), CGRectGetMinY(mainViewBounds)+7, CGRectGetWidth(mainViewBounds)-120, 30)];
+    bgView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    bgView.layer.borderWidth = 0.5;
+    bgView.layer.cornerRadius = 6;
+    bgView.clipsToBounds = YES;
+    
+    _searchTextField = [[UITextField alloc] init];
+//    _searchTextField.frame = CGRectMake(CGRectGetWidth(mainViewBounds)/2-((CGRectGetWidth(mainViewBounds)-120)/2), CGRectGetMinY(mainViewBounds)+7, CGRectGetWidth(mainViewBounds)-120, 30);
+    _searchTextField.frame = CGRectMake(0, 0, CGRectGetWidth(bgView.bounds) - 40, CGRectGetHeight(bgView.bounds));
+    _searchTextField.borderStyle = UITextBorderStyleNone;
+    _searchTextField.layer.borderWidth = 0.5;
+    _searchTextField.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    _searchTextField.placeholder = @"请输入城市";
+    _searchTextField.delegate = self;
+    [bgView addSubview:_searchTextField];
+    
+    
+    UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    searchBtn.frame = CGRectMake(CGRectGetMaxX(_searchTextField.bounds)-0.5, 0, 40+0.5, 30);
+    searchBtn.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    searchBtn.layer.borderWidth = 0.5;
+    [searchBtn setImage:[UIImage imageNamed:@"destination_search"] forState:UIControlStateNormal];
+    [searchBtn addTarget:self action:@selector(searchButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [bgView addSubview:searchBtn];
+    
 
+    [self rdv_tabBarController].navigationItem.titleView = bgView;
+    
+}
+
+#pragma mark uitextfield Delegate
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    
+    
+    if (textField.text != nil && textField.text.length > 0)
+    {
+        self.searchResultVC.view.hidden = NO;
+        // 放在最上层
+        [self.view bringSubviewToFront:self.searchResultVC.view];
+        
+        self.searchResultVC.searchArr = [NSMutableArray array];//这里可以说是清空tableview旧datasouce
+        for (NSString *str in _cityArray)
+        {
+            if ([str rangeOfString:textField.text options:NSCaseInsensitiveSearch].length > 0)
+            {
+                [self.searchResultVC.searchArr addObject:str];
+            }
+        }
+        [self.searchResultVC.tableView reloadData];
+    }else
+    {
+        self.searchBgView.hidden = NO;
+        [self.view bringSubviewToFront:_searchBgView];
+    }
+}
+
+// 搜索按钮
+- (void)searchButtonClick:(UIButton *)sender {
+    DLog(@"搜索");
+}
+
+// textfield改变
+- (void)textfieldDidChange {
+
+    if (_searchTextField.text != nil && _searchTextField.text.length > 0)
+    {
+        self.searchBgView.hidden = YES;
+        self.searchResultVC.view.hidden = NO;
+        // 放在最上层
+        [self.view bringSubviewToFront:self.searchResultVC.view];
+        
+        self.searchResultVC.searchArr = [NSMutableArray array];//这里可以说是清空tableview旧datasouce
+        for (NSString *str in _cityArray)
+        {
+            if ([str rangeOfString:_searchTextField.text options:NSCaseInsensitiveSearch].length > 0)
+            {
+                [self.searchResultVC.searchArr addObject:str];
+            }
+        }
+        [self.searchResultVC.tableView reloadData];
+    }else
+    {
+        self.searchResultVC.view.hidden = YES;                                                                                                                                                                                  
+        self.searchBgView.hidden = NO;
+        [self.view bringSubviewToFront:_searchBgView];
+    }
+}
+
+/** 键盘显示完成（弹出） */
+- (void)keyboardDidShow:(NSNotification *)noti
+{
+    // 取出键盘高度
+    NSDictionary *info = noti.userInfo;
+    self.keyboardHeight = [info[UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
+}
+
+- (UIView *)searchBgView {
+    if (!_searchBgView) {
+        UIView *searchBgView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height)];
+        searchBgView.backgroundColor = [UIColor blackColor];
+        searchBgView.alpha = 0.5;
+        searchBgView.hidden = YES;
+        [self.view addSubview:searchBgView];
+        _searchBgView = searchBgView;
+    }
+    
+    return _searchBgView;
+}
+
+- (SearchResultTableViewController *)searchResultVC {
+    if (!_searchResultVC) {
+        SearchResultTableViewController *searchResultVC = [[SearchResultTableViewController alloc] initWithStyle:UITableViewStylePlain];
+        searchResultVC.view.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height-64);
+        searchResultVC.tableView.contentInset = UIEdgeInsetsMake(0, 0, self.keyboardHeight, 0);
+        searchResultVC.view.backgroundColor = [UIColor blackColor];
+        searchResultVC.view.alpha = 0.5;
+        searchResultVC.view.hidden = YES;
+        searchResultVC.delegate = self;
+        [self.view addSubview:searchResultVC.view];
+        [self addChildViewController:searchResultVC];
+        
+        _searchResultVC = searchResultVC;
+    }
+    
+    
+    return _searchResultVC;
+}
+
+#pragma mark SearchResultTableViewControllerDelegate
+- (void)didSelectRow:(NSInteger)row {
+    _searchTextField.text = _searchResultVC.searchArr[row];
+}
+
+#pragma mark - message
 - (void)messageBar
 {
-    _barImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"tixing_xiaoxi"] ];
+    _barImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"destination_message"] ];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickMessage)];
     [_barImage addGestureRecognizer:tap];
     
@@ -174,14 +349,14 @@
     else
     {
         MessageViewController *mess = [[MessageViewController alloc]init];
-        _barImage.image = [UIImage imageNamed:@"tixing_xiaoxi"];
+        _barImage.image = [UIImage imageNamed:@"destination_message"];
         [self.navigationController pushViewController:mess animated:YES];
     }
 }
 
 -(void)cancelFlash{
     [_flashMessageBtnTimer invalidate];
-    _barImage.image = [UIImage imageNamed:@"tixing_xiaoxi"];
+    _barImage.image = [UIImage imageNamed:@"destination_message"];
 }
 
 
@@ -348,7 +523,10 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self.view endEditing:YES];
+
+    self.searchResultVC.view.hidden = YES;
+    self.searchBgView.hidden = YES;
+    [_searchTextField resignFirstResponder];
 }
 
 

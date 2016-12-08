@@ -70,5 +70,8 @@
 - (void)changeStatusBarTitle:(NSString *)title;
 - (void)hiddenStatusBar;
 
+// 搜索框
+- (void)searchButtonClick:(UIButton *)sender;
+- (void)didSelectRow:(NSInteger)row;
 
 @end

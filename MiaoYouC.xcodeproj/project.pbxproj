@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		AE1398081DDC47250048DB96 /* WebScriptObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AE1398071DDC47250048DB96 /* WebScriptObject.m */; };
+		AE1BD1F11DEE8BC400775EF3 /* Destination_shufflingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE1BD1EF1DEE8BC400775EF3 /* Destination_shufflingCell.m */; };
+		AE1BD1F21DEE8BC400775EF3 /* Destination_shufflingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE1BD1F01DEE8BC400775EF3 /* Destination_shufflingCell.xib */; };
+		AE1BD1F61DEEC82700775EF3 /* Destination_buttonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE1BD1F41DEEC82700775EF3 /* Destination_buttonCell.m */; };
+		AE1BD1F71DEEC82700775EF3 /* Destination_buttonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE1BD1F51DEEC82700775EF3 /* Destination_buttonCell.xib */; };
 		AE3DBED21DD06B30004000B6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE3DBED11DD06B30004000B6 /* LoginViewController.m */; };
 		AE3DBED51DD06B43004000B6 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE3DBED41DD06B43004000B6 /* MessageViewController.m */; };
 		AE582ED91DD59E650062E318 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE582ED81DD59E650062E318 /* LoginView.m */; };
@@ -79,6 +83,9 @@
 		AE90E1001DD9BC45007E830C /* UINavigationController+RotateForMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = AE90E0F21DD9BC44007E830C /* UINavigationController+RotateForMenu.m */; };
 		AE90E1011DD9BC45007E830C /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = AE90E0F41DD9BC44007E830C /* UIView+Extension.m */; };
 		AE90E1021DD9BC45007E830C /* UIViewController+Transitions.m in Sources */ = {isa = PBXBuildFile; fileRef = AE90E0F61DD9BC45007E830C /* UIViewController+Transitions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AE9160411DEFC00C00B095DB /* Destination_guideAndButlerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE91603F1DEFC00C00B095DB /* Destination_guideAndButlerCell.m */; };
+		AE9160421DEFC00C00B095DB /* Destination_guideAndButlerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE9160401DEFC00C00B095DB /* Destination_guideAndButlerCell.xib */; };
+		AE9160451DF0254400B095DB /* SearchResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9160441DF0254400B095DB /* SearchResultTableViewController.m */; };
 		AEF47B5A1DDADF3000ADA2F7 /* MyHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF47B581DDADF3000ADA2F7 /* MyHeaderTableViewCell.m */; };
 		AEF47B5B1DDADF3000ADA2F7 /* MyHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEF47B591DDADF3000ADA2F7 /* MyHeaderTableViewCell.xib */; };
 		AEF47B5E1DDAF27300ADA2F7 /* header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AEF47B5C1DDAF27300ADA2F7 /* header@2x.png */; };
@@ -112,6 +119,12 @@
 		4EBAB7AE11E32EFB56FB07FF /* Pods-MiaoYouC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiaoYouC.release.xcconfig"; path = "Pods/Target Support Files/Pods-MiaoYouC/Pods-MiaoYouC.release.xcconfig"; sourceTree = "<group>"; };
 		AE1398061DDC47250048DB96 /* WebScriptObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebScriptObject.h; sourceTree = "<group>"; };
 		AE1398071DDC47250048DB96 /* WebScriptObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebScriptObject.m; sourceTree = "<group>"; };
+		AE1BD1EE1DEE8BC400775EF3 /* Destination_shufflingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Destination_shufflingCell.h; sourceTree = "<group>"; };
+		AE1BD1EF1DEE8BC400775EF3 /* Destination_shufflingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Destination_shufflingCell.m; sourceTree = "<group>"; };
+		AE1BD1F01DEE8BC400775EF3 /* Destination_shufflingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Destination_shufflingCell.xib; sourceTree = "<group>"; };
+		AE1BD1F31DEEC82700775EF3 /* Destination_buttonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Destination_buttonCell.h; sourceTree = "<group>"; };
+		AE1BD1F41DEEC82700775EF3 /* Destination_buttonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Destination_buttonCell.m; sourceTree = "<group>"; };
+		AE1BD1F51DEEC82700775EF3 /* Destination_buttonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Destination_buttonCell.xib; sourceTree = "<group>"; };
 		AE3DBEC91DD06878004000B6 /* MYConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MYConfig.h; sourceTree = "<group>"; };
 		AE3DBED01DD06B30004000B6 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		AE3DBED11DD06B30004000B6 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -257,6 +270,11 @@
 		AE90E0F41DD9BC44007E830C /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		AE90E0F51DD9BC45007E830C /* UIViewController+Transitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Transitions.h"; sourceTree = "<group>"; };
 		AE90E0F61DD9BC45007E830C /* UIViewController+Transitions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Transitions.m"; sourceTree = "<group>"; };
+		AE91603E1DEFC00C00B095DB /* Destination_guideAndButlerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Destination_guideAndButlerCell.h; sourceTree = "<group>"; };
+		AE91603F1DEFC00C00B095DB /* Destination_guideAndButlerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Destination_guideAndButlerCell.m; sourceTree = "<group>"; };
+		AE9160401DEFC00C00B095DB /* Destination_guideAndButlerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Destination_guideAndButlerCell.xib; sourceTree = "<group>"; };
+		AE9160431DF0254400B095DB /* SearchResultTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultTableViewController.h; sourceTree = "<group>"; };
+		AE9160441DF0254400B095DB /* SearchResultTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultTableViewController.m; sourceTree = "<group>"; };
 		AEF47B571DDADF3000ADA2F7 /* MyHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHeaderTableViewCell.h; sourceTree = "<group>"; };
 		AEF47B581DDADF3000ADA2F7 /* MyHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHeaderTableViewCell.m; sourceTree = "<group>"; };
 		AEF47B591DDADF3000ADA2F7 /* MyHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyHeaderTableViewCell.xib; sourceTree = "<group>"; };
@@ -303,6 +321,24 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		AE1BD1E81DEE7B8700775EF3 /* destinationView */ = {
+			isa = PBXGroup;
+			children = (
+				AE1BD1EE1DEE8BC400775EF3 /* Destination_shufflingCell.h */,
+				AE1BD1EF1DEE8BC400775EF3 /* Destination_shufflingCell.m */,
+				AE1BD1F01DEE8BC400775EF3 /* Destination_shufflingCell.xib */,
+				AE1BD1F31DEEC82700775EF3 /* Destination_buttonCell.h */,
+				AE1BD1F41DEEC82700775EF3 /* Destination_buttonCell.m */,
+				AE1BD1F51DEEC82700775EF3 /* Destination_buttonCell.xib */,
+				AE91603E1DEFC00C00B095DB /* Destination_guideAndButlerCell.h */,
+				AE91603F1DEFC00C00B095DB /* Destination_guideAndButlerCell.m */,
+				AE9160401DEFC00C00B095DB /* Destination_guideAndButlerCell.xib */,
+				AE9160431DF0254400B095DB /* SearchResultTableViewController.h */,
+				AE9160441DF0254400B095DB /* SearchResultTableViewController.m */,
+			);
+			path = destinationView;
+			sourceTree = "<group>";
+		};
 		AE3DBECA1DD06A19004000B6 /* LoginViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -334,6 +370,7 @@
 		AE582ED41DD59E430062E318 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AE1BD1E81DEE7B8700775EF3 /* destinationView */,
 				AEF47B561DDADEC200ADA2F7 /* MyView */,
 				AE582ED51DD59E430062E318 /* LoginView */,
 				AE582ED61DD59E430062E318 /* RegistView */,
@@ -910,8 +947,11 @@
 				AEF47B661DDAFE8700ADA2F7 /* HaveSeenTableViewCell.xib in Resources */,
 				AE90E05C1DD94E30007E830C /* FindPasswordViewController.xib in Resources */,
 				AEF47B5B1DDADF3000ADA2F7 /* MyHeaderTableViewCell.xib in Resources */,
+				AE1BD1F71DEEC82700775EF3 /* Destination_buttonCell.xib in Resources */,
 				AE8A20F71DD4651700E75B3A /* Localizable.strings in Resources */,
 				AEF47B5E1DDAF27300ADA2F7 /* header@2x.png in Resources */,
+				AE9160421DEFC00C00B095DB /* Destination_guideAndButlerCell.xib in Resources */,
+				AE1BD1F21DEE8BC400775EF3 /* Destination_shufflingCell.xib in Resources */,
 				AEF47B681DDB019D00ADA2F7 /* arrow@2x.png in Resources */,
 				AE82262D1DCC255B008238F5 /* Assets.xcassets in Resources */,
 				AEF47B611DDAF2D600ADA2F7 /* header_bg@2x.png in Resources */,
@@ -994,6 +1034,7 @@
 				AE90E0B31DD963BC007E830C /* ModifyGuestInfoRequest.m in Sources */,
 				AE90E07A1DD9631E007E830C /* APIRequest.m in Sources */,
 				AE90E0CC1DD968EA007E830C /* UploadPictureRequest.m in Sources */,
+				AE1BD1F61DEEC82700775EF3 /* Destination_buttonCell.m in Sources */,
 				AE90E0C01DD963D0007E830C /* SendRegistCodeResponse.m in Sources */,
 				AE90E06F1DD95DF0007E830C /* ModelBase.m in Sources */,
 				AE90E0FC1DD9BC45007E830C /* UIFont+SytemFontOverride.m in Sources */,
@@ -1019,6 +1060,7 @@
 				AE90E08C1DD9635B007E830C /* GetGuestInfoRequest.m in Sources */,
 				AE90E0BA1DD963C7007E830C /* RegistResponse.m in Sources */,
 				AE90E0A71DD963A7007E830C /* CarInfo.m in Sources */,
+				AE9160411DEFC00C00B095DB /* Destination_guideAndButlerCell.m in Sources */,
 				AE3DBED51DD06B43004000B6 /* MessageViewController.m in Sources */,
 				AE90E0AE1DD963A7007E830C /* UserInfo.m in Sources */,
 				AE90E1021DD9BC45007E830C /* UIViewController+Transitions.m in Sources */,
@@ -1031,6 +1073,7 @@
 				AE90E0A81DD963A7007E830C /* LoginRequest.m in Sources */,
 				AE90E0A91DD963A7007E830C /* LoginResponse.m in Sources */,
 				AE90E0811DD9633F007E830C /* ConfirmRegistCodeResponse.m in Sources */,
+				AE9160451DF0254400B095DB /* SearchResultTableViewController.m in Sources */,
 				AE90E08D1DD9635B007E830C /* GetGuestInfoResponse.m in Sources */,
 				AE90E0B91DD963C7007E830C /* RegistRequest.m in Sources */,
 				AE82268C1DCC7B30008238F5 /* AppDelegate+RootController.m in Sources */,
@@ -1045,6 +1088,7 @@
 				AE8226981DCC818B008238F5 /* MyViewController.m in Sources */,
 				AE90E0F71DD9BC45007E830C /* GTMNSString+HTML.m in Sources */,
 				AE90E0BF1DD963D0007E830C /* SendRegistCodeRequest.m in Sources */,
+				AE1BD1F11DEE8BC400775EF3 /* Destination_shufflingCell.m in Sources */,
 				AE90E0AD1DD963A7007E830C /* TouristsPhoto.m in Sources */,
 				AE90E0F91DD9BC45007E830C /* NSString+HTML.m in Sources */,
 				AE582EDD1DD5B7C20062E318 /* RegisterViewController.m in Sources */,

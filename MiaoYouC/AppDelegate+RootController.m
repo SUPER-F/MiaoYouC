@@ -37,11 +37,11 @@
     navc.navigationBar.barTintColor = [UIColor whiteColor];
     
     navc.navigationBar.shadowImage = [[UIImage alloc] init];
-    [navc.navigationBar setTranslucent:NO];
+    [navc.navigationBar setTranslucent:YES];
     
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     [navc.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:19],NSForegroundColorAttributeName:[UIColor blackColor]}];
     navc.navigationBar.tintColor = [UIColor blackColor];
@@ -81,12 +81,12 @@
     
     if ([viewController isKindOfClass:[DestinationViewController class]])
     {
-        tabBarController.navigationItem.title = @"目的地";
+//        tabBarController.navigationItem.title = @"";
         imgView.image = [UIImage imageNamed:@"table_destination"];
     }
     if ([viewController isKindOfClass:[TakeMePlayViewController class]])
     {
-        tabBarController.navigationItem.title = @"带我玩";
+        tabBarController.navigationItem.title = @"本地向导";
         imgView.image = [UIImage imageNamed:@"table_takeMePlay"];
     }
     if ([viewController isKindOfClass:[DiscoverViewController class]])
@@ -143,9 +143,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [[UIApplication sharedApplication]setStatusBarHidden:NO];
-    [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];
+//    [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];
     
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor]}];
+//    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor]}];
 }
     
     

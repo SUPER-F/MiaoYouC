@@ -26,14 +26,24 @@ static NSString *const haveSeenTableCellIdentifier = @"HaveSeenTableViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-//    [[UIApplication sharedApplication] setStatusBarHidden:TRUE];
-    
+        
     [self createTableView];
     
     self.cellImages = @[@[@"my_allOrder", @"my_wallet", @"my_cardVoucher"], @[@"my_collection", @"my_recommendFriends", @"my_useGuide"], @[@"my_controlCenter", @"my_feedback", @"my_systemSettings"]];
     self.cellTitles = @[@[@"my_allOrder", @"my_wallet", @"my_cardVoucher"], @[@"my_collection", @"my_recommendFriends", @"my_useGuide"], @[@"my_controlCenter", @"my_feedback", @"my_systemSettings"]];
 }
+
+//- (void)viewWillAppear:(BOOL)animated {
+//    [super viewWillAppear:animated];
+//    
+//    self.navigationController.navigationBarHidden = YES;
+//}
+//
+//- (void)viewWillDisappear:(BOOL)animated {
+//    [super viewWillDisappear:animated];
+//    
+//    self.navigationController.navigationBarHidden = NO;
+//}
 
 - (void)createTableView {
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, kScreenH - kScreenW/6 + 16) style:UITableViewStyleGrouped];
@@ -118,7 +128,14 @@ static NSString *const haveSeenTableCellIdentifier = @"HaveSeenTableViewCell";
 
 #pragma mark - MyHeaderTableViewCellDelegate
 - (void)myHeaderTableViewCell:(MyHeaderTableViewCell *)cell headerBackgroundImgViewSender:(id)sender {
-    
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.delegate = self;
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+    [[self rdv_tabBarController] presentViewController:imagePicker animated:YES completion:nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:nil delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 - (void)myHeaderTableViewCell:(MyHeaderTableViewCell *)cell headerImgViewSender:(id)sender {

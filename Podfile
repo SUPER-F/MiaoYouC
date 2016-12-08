@@ -1,0 +1,16 @@
+platform :ios,'8.0'
+target 'MiaoYouC' do
+    pod 'AFNetworking'
+    pod 'RDVTabBarController'
+    pod 'CWStatusBarNotification'
+    pod 'MSAlertController'
+    pod 'MBProgressHUD'
+    pod 'Masonry'
+    pod 'FileMD5Hash', :git => 'https://github.com/JoeKun/FileMD5Hash.git', :commit => '23cb18d8dac864e306ba316aa0dc04bdaf08f044'
+    pod 'RestKit', '~> 0.10.3'
+    pod 'jastor', '~> 0.2.1'
+    pod 'JSONKit'
+    pod 'KGModal', '~> 1.1.0'
+    pod 'Reachability', '~> 3.1.1'
+    pod 'SDWebImage'
+end
